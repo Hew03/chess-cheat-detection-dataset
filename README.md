@@ -1,1 +1,1 @@
-# chess-cheat-detection
+# chess-cheat-detection-dataset
