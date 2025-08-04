@@ -15,7 +15,7 @@ stockfish_path = "D:/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x
 progress_file = "data/progress.pkl"
 output_file = "data/game_features_with_cheating.parquet"
 elo_ratings_file = "data/elo_ratings.pkl"
-max_games = 1000000
+max_games = 111000
 chunk_size = 100
 
 @contextmanager
@@ -139,6 +139,9 @@ if not is_cached:
 num_bins = 10
 elo_bins = pd.qcut(elo_ratings, q=num_bins, duplicates="drop").categories
 print("Elo bins:", [f"{int(b.left)}-{int(b.right)}" for b in elo_bins])
+
+with open("data/elo_bins.pkl", "wb") as f:
+    pickle.dump(elo_bins, f)
 
 # Main processing loop
 games_data = []
